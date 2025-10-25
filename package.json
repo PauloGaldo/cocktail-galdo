@@ -5,9 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:ssr": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:galdo": "node dist/galdo/server/server.mjs"
+    "serve:ssr:galdo": "node dist/galdo/server/server.mjs",
+    "serve:nssr:galdo": "ng run galdo:serve-non-ssr:development"
   },
   "prettier": {
     "printWidth": 100,
