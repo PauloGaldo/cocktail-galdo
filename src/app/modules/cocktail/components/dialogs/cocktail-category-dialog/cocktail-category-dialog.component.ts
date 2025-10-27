@@ -24,7 +24,7 @@ export class CocktailCategoryDialogComponent {
 
   protected navigateToDetail(id: string): void {
     this.matDialog.closeAll();
-    this.router.navigate([`${Routing.COCKTAIL_DETAIL}/${id}`]);
+    this.router.navigate([Routing.COCKTAIL_DETAIL, id]);
   }
 
 }

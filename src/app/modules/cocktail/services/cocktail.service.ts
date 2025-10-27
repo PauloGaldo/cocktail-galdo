@@ -25,4 +25,8 @@ export class CocktailService {
     return this.http.get(`${COCKTAIL_API}filter.php`, { params: params });
   }
 
+  getRandomCocktail() {
+    return this.http.get(`${COCKTAIL_API}random.php`);
+  }
+
 }

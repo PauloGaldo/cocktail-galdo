@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { map, of, switchMap, tap } from 'rxjs';
+import { finalize, map, of, switchMap, tap } from 'rxjs';
 import { COCKTAIL_IMAGE_API } from '../../../../../environments/environment';
 import { MobileUtils } from '../../../../core/utils/mobile.utils';
 import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.component';
@@ -80,7 +80,7 @@ export class CocktailListComponent implements OnInit, AfterViewInit {
           });
           return data.drinks;
         }),
-        tap(() => this.loading.set(false))
+        finalize(() => this.loading.set(false)),
       )
       .subscribe({
         next: (drinks: any) => {

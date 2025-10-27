@@ -1,15 +1,22 @@
 <mat-toolbar>
-  <button matIconButton>
-    <mat-icon>menu</mat-icon>
+  <button matButton="elevated" (click)="navigateToRandomCocktail()">
+    <mat-icon>casino</mat-icon>
+    Random
   </button>
-  <span>My App</span>
   <span class="flex-auto"></span>
-  <button matIconButton>
-    <mat-icon>favorite</mat-icon>
+  <button matButton [matMenuTriggerFor]="menu">
+    <mat-icon svgIcon="es"></mat-icon>
   </button>
-  <button matIconButton>
-    <mat-icon>share</mat-icon>
-  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="changeLanguage('en')">
+      <mat-icon svgIcon="en"></mat-icon>
+      English
+    </button>
+    <button mat-menu-item (click)="changeLanguage('es')">
+      <mat-icon svgIcon="es"></mat-icon>
+      Español
+    </button>
+  </mat-menu>
 </mat-toolbar>
 <div class="p-4">
   <router-outlet />

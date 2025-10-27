@@ -4,7 +4,7 @@ import { LayoutComponent } from './layout.component';
 export default [
   {
     path: '',
-    component: LayoutComponent,
+    component: LayoutComponent,    
     children: [
       {
         path: 'cocktail',

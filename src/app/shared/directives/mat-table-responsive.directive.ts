@@ -23,15 +23,22 @@ export class MatTableResponsiveDirective implements AfterViewInit {
   private theadChanged$ = new BehaviorSubject(true);
   private tbodyChanged$ = new Subject<boolean>();
 
-  private theadObserver = new MutationObserver(() => this.theadChanged$.next(true));
-  private tbodyObserver = new MutationObserver(() => this.tbodyChanged$.next(true));
+  private theadObserver;
+  private tbodyObserver;
+
+  constructor() {
+    if (typeof MutationObserver !== "undefined") {
+      this.theadObserver = new MutationObserver(() => this.theadChanged$.next(true));
+      this.tbodyObserver = new MutationObserver(() => this.tbodyChanged$.next(true));
+    }
+  }
 
   ngAfterViewInit() {
     this.thead = this.table.nativeElement.querySelector("thead");
     this.tbody = this.table.nativeElement.querySelector("tbody");
 
-    this.theadObserver.observe(this.thead!, { characterData: true, subtree: true });
-    this.tbodyObserver.observe(this.tbody!, { childList: true });
+    this.theadObserver?.observe(this.thead!, { characterData: true, subtree: true });
+    this.tbodyObserver?.observe(this.tbody!, { childList: true });
 
     combineLatest([this.theadChanged$, this.tbodyChanged$])
       .pipe(
