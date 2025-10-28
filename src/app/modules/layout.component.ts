@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, inject, PLATFORM_ID, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -28,7 +29,16 @@ export class LayoutComponent {
   protected readonly router = inject(Router);
   protected readonly overlayService = inject(OverlayService);
   protected readonly translateService = inject(TranslateService);
-  protected readonly selectedLanguage = signal<string>(localStorage.getItem('language') || this.translateService.getCurrentLang() || 'en');
+  protected readonly platformId = inject(PLATFORM_ID);
+  protected readonly selectedLanguage = signal<string>((() => {
+    if (isPlatformBrowser(this.platformId)) {
+      const storedLang = localStorage.getItem('language');
+      if (storedLang) {
+        return storedLang;
+      }
+    }
+    return this.translateService.getCurrentLang() || 'en';
+  })());
 
   ngOnInit() {
     const lang = this.selectedLanguage();
@@ -45,9 +55,7 @@ export class LayoutComponent {
         next: (response) => {
           const [cocktail] = (response as any).drinks;
           const url = `${Routing.COCKTAIL_DETAIL}/${cocktail.idDrink}`;
-          this.router
-            .navigate([url], { onSameUrlNavigation: 'reload' })
-            // .then(() => this.router.navigate([url]));
+          this.router.navigate([url], { onSameUrlNavigation: 'reload' });
         }
       });
   }
@@ -55,7 +63,9 @@ export class LayoutComponent {
   changeLanguage(lang: string) {
     this.translateService.use(lang);
     this.selectedLanguage.set(lang);
-    localStorage.setItem('language', lang);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('language', lang);
+    }
   }
 
 }
