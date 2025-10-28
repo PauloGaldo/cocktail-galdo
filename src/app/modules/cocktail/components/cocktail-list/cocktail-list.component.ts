@@ -9,7 +9,7 @@ import { MatPaginator, MatPaginatorIntl, MatPaginatorModule } from '@angular/mat
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { TranslateModule } from '@ngx-translate/core';
 import { finalize, map, of, switchMap, tap } from 'rxjs';
-import { COCKTAIL_IMAGE_API } from '../../../../../environments/environment';
+import { DrinkUtils } from '../../../../core/utils/drink.utils';
 import { MobileUtils } from '../../../../core/utils/mobile.utils';
 import { CustomPaginatorAdapter } from '../../../../shared/adapters/custom-paginator.adapter';
 import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.component';
@@ -141,15 +141,7 @@ export class CocktailListComponent implements OnInit, AfterViewInit {
   }
 
   protected onIngredientClick(drink: any): void {
-    of(Object.keys(drink)
-      .filter((key: any) => key.startsWith('strIngredient') && drink[key])
-      .map((key: any, index: number) => {
-        return {
-          name: drink[key],
-          measure: drink[`strMeasure${index + 1}`],
-          image: `${COCKTAIL_IMAGE_API}/${drink[key]}-small.png`,
-        }
-      }))
+    of(DrinkUtils.getIngredientList(drink))
       .pipe(
         switchMap((ingredients: any) => {
           const isMobile = MobileUtils.isMobile();

@@ -44,7 +44,10 @@ export class LayoutComponent {
       .subscribe({
         next: (response) => {
           const [cocktail] = (response as any).drinks;
-          this.router.navigate([Routing.COCKTAIL_DETAIL, cocktail.idDrink]);
+          const url = `${Routing.COCKTAIL_DETAIL}/${cocktail.idDrink}`;
+          this.router
+            .navigate([url], { onSameUrlNavigation: 'reload' })
+            // .then(() => this.router.navigate([url]));
         }
       });
   }

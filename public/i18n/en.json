@@ -35,6 +35,10 @@
       }
     }
   },
+  "cocktailDetails": {
+    "ingredients": "Ingredients",
+    "preparation": "Preparation"
+  },
   "layout": {
     "header": {
       "randomCocktail": "Random Cocktail",

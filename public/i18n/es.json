@@ -35,6 +35,10 @@
       }
     }
   },
+  "cocktailDetails": {
+    "ingredients": "Ingredientes",
+    "preparation": "Preparación"
+  },
   "layout": {
     "header": {
       "randomCocktail": "Cóctel aleatorio",

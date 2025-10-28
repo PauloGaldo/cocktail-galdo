@@ -29,4 +29,8 @@ export class CocktailService {
     return this.http.get(`${COCKTAIL_API}random.php`);
   }
 
+  getCocktailById(id: string) {
+    return this.http.get(`${COCKTAIL_API}lookup.php`, { params: { i: id } });
+  }
+
 }

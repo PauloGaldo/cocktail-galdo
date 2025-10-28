@@ -102,3 +102,7 @@
     width: 100%;
   }
 }
+
+@include mat.chips-overrides((elevated-container-color: var(--mat-sys-primary),
+    label-text-color: var(--mat-sys-on-primary),
+  ));
