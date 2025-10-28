@@ -1,4 +1,10 @@
-<h2 mat-dialog-title>{{ data.drinkName }}</h2>
+<div class="flex p-4">
+  <span class="text-2xl">{{ data.drinkName }}</span>
+  <div class="flex-auto"></div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <mat-dialog-content class="mat-typography">
   <div class="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-4">
     @for (ingredient of data.ingredients; track $index) {
@@ -19,6 +25,3 @@
     }
   </div>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button matButton mat-dialog-close>Cerrar</button>
-</mat-dialog-actions>

@@ -5,11 +5,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { TranslateModule } from '@ngx-translate/core';
 import { finalize, map, of, switchMap, tap } from 'rxjs';
 import { COCKTAIL_IMAGE_API } from '../../../../../environments/environment';
 import { MobileUtils } from '../../../../core/utils/mobile.utils';
+import { CustomPaginatorAdapter } from '../../../../shared/adapters/custom-paginator.adapter';
 import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.component';
 import { MatTableResponsiveDirective } from '../../../../shared/directives/mat-table-responsive.directive';
 import { OverlayService } from '../../../../shared/services/overlay.service';
@@ -20,6 +22,7 @@ import { CocktailIngredientsDialogComponent } from '../dialogs/cocktail-ingredie
 @Component({
   selector: 'galdo-cocktail-list',
   imports: [
+    TranslateModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -30,6 +33,9 @@ import { CocktailIngredientsDialogComponent } from '../dialogs/cocktail-ingredie
     FormsModule,
     ReactiveFormsModule,
     SpinnerComponent,
+  ],
+  providers: [
+    { provide: MatPaginatorIntl, useClass: CustomPaginatorAdapter },
   ],
   templateUrl: './cocktail-list.component.html',
   styleUrl: './cocktail-list.component.scss',

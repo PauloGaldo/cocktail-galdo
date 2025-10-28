@@ -1,0 +1,48 @@
+{
+  "basic": {
+    "paginator": {
+      "firstPageLabel": "First Page",
+      "itemsPerPageLabel": "Items per Page",
+      "lastPageLabel": "Last Page",
+      "nextPageLabel": "Next Page",
+      "previousPageLabel": "Previous Page",
+      "pageRangeLabel": "Page {{page}} of {{totalPages}} | {{length}} items"
+    }
+  },
+  "cocktail": {
+    "cocktailList": {
+      "form": {
+        "name": {
+          "label": "Filter by Name or Ingredient",
+          "placeholder": "E.g. Vodka"
+        }
+      },
+      "table": {
+        "header": {
+          "id": "ID",
+          "image": "Image",
+          "name": "Name",
+          "category": "Category",
+          "type": "Type",
+          "ingredientsQuantity": "Ingredients Quantity",
+          "modifiedDate": "Modified Date"
+        },
+        "footer": {
+          "totalAlcoholics": "Total Alcoholics",
+          "totalNonAlcoholics": "Total Non-Alcoholics"
+        },
+        "noResults": "No results found"
+      }
+    }
+  },
+  "layout": {
+    "header": {
+      "randomCocktail": "Random Cocktail",
+      "languageSwitcher": {
+        "label": "Language",
+        "english": "English",
+        "spanish": "Español"
+      }
+    }
+  }
+}

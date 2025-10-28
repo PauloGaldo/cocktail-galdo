@@ -1,20 +1,20 @@
 <mat-toolbar>
   <button matButton="elevated" (click)="navigateToRandomCocktail()">
     <mat-icon>casino</mat-icon>
-    Random
+    {{ 'layout.header.randomCocktail' | translate }}
   </button>
   <span class="flex-auto"></span>
   <button matButton [matMenuTriggerFor]="menu">
-    <mat-icon svgIcon="es"></mat-icon>
+    <mat-icon [svgIcon]="selectedLanguage()"></mat-icon>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="changeLanguage('en')">
       <mat-icon svgIcon="en"></mat-icon>
-      English
+      {{ 'layout.header.languageSwitcher.english' | translate }}
     </button>
     <button mat-menu-item (click)="changeLanguage('es')">
       <mat-icon svgIcon="es"></mat-icon>
-      Español
+      {{ 'layout.header.languageSwitcher.spanish' | translate }}
     </button>
   </mat-menu>
 </mat-toolbar>

@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { Routing } from '../../../../../core/enums/routing.enum';
 
@@ -11,6 +12,7 @@ import { Routing } from '../../../../../core/enums/routing.enum';
     MatDialogModule,
     MatButtonModule,
     MatRippleModule,
+    MatIconModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './cocktail-category-dialog.component.html',

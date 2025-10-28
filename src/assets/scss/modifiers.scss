@@ -92,7 +92,7 @@
   }
 
   .mat-mdc-dialog-content {
-    max-height: 82vh !important;
+    max-height: calc(100vh - 72px) !important;
   }
 
   .mat-mdc-dialog-actions {
